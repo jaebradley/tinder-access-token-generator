@@ -1,0 +1,23 @@
+language: node_js
+cache:
+  directories:
+    - ~/.npm
+notifications:
+  email: true
+node_js:
+  - '8'
+  - '10'
+  - '11'
+install: npm install
+jobs:
+  include:
+    - stage: test
+      script:
+        - npm run build
+        - npm run lint
+        - npm run test
+        - npm run is-es5
+      after_success: npm run codecov
+    - stage: deploy
+      if: branch = master
+      script: npm run deploy
