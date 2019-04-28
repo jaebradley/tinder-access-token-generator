@@ -1,9 +1,6 @@
 import axios from 'axios';
 
-import {
-  generateAccessToken,
-  getId,
-} from './facebook';
+import generateAccessToken from './generateAccessToken';
 
 export default async function generateToken({
   facebookEmailAddress,
@@ -13,15 +10,16 @@ export default async function generateToken({
     emailAddress: facebookEmailAddress,
     password: facebookPassword,
   });
-  const facebookId = await getId({ accessToken: facebookAccessToken });
 
   const response = await axios.post(
-    'https://api.gotinder.com/auth',
+    'https://api.gotinder.com/v2/auth/login/facebook',
     {
-      facebook_id: facebookId,
-      facebook_token: facebookAccessToken,
+      token: facebookAccessToken,
     },
   );
 
-  return response.data.token;
+  return {
+    apiToken: response.data.data.api_token,
+    refreshToken: response.data.data.refresh_token,
+  };
 }
