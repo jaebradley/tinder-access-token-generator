@@ -11,8 +11,7 @@ This library does the following
 
 1. Uses [`puppeteer`](https://github.com/GoogleChrome/puppeteer) to effectively go through the login flow via headless browser
 2. Goes through Tinder confirmation flow - intercepts authentication response and parses access token
-3. Uses access token from Facebook to identify associated Facebook ID
-4. Using both access token from Facebook and Facebook ID, makes request to Tinder's authentication endpoint to return API access token
+3. Using the Facebook access token, makes a request to Tinder's authentication endpoint to return an API access token and a refresh token
 
 ## API
 
@@ -39,7 +38,7 @@ To run all tests, execute `npm run test`.
 
 To only run integration tests, execute `npm run integration-test`.
 
-In order to execute local integration tests successfully, you'll need to specify `FACEBOOK_EMAIL_ADDRESS`, `FACEBOOK_PASSWORD`, and `EXPECTED_FACEBOOK_USER_ID` environment variables in a `.env` file
+In order to execute local integration tests successfully, you'll need to specify `FACEBOOK_EMAIL_ADDRESS`, and `FACEBOOK_PASSWORD` environment variables in a `.env` file
 
 To build the production bundle, execute `npm run build`.
 
