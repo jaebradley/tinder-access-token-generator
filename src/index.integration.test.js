@@ -4,11 +4,16 @@ jest.setTimeout(10000);
 
 describe('#generateToken', () => {
   it('generates token', async () => {
-    const accessToken = await generateToken({
+    const {
+      apiToken,
+      refreshToken,
+    } = await generateToken({
       facebookEmailAddress: process.env.FACEBOOK_EMAIL_ADDRESS,
       facebookPassword: process.env.FACEBOOK_PASSWORD,
     });
-    expect(accessToken).toBeDefined();
-    expect(accessToken.length).toBeGreaterThan(0);
+    expect(apiToken).toBeDefined();
+    expect(apiToken.length).toBeGreaterThan(0);
+    expect(refreshToken).toBeDefined();
+    expect(refreshToken.length).toBeGreaterThan(0);
   });
 });
