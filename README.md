@@ -1,6 +1,5 @@
 # Tinder Access Token Generator
 
-[![Greenkeeper badge](https://badges.greenkeeper.io/jaebradley/tinder-access-token-generator.svg)](https://greenkeeper.io/)
 [![Build Status](https://travis-ci.org/jaebradley/tinder-access-token-generator.svg?branch=master)](https://travis-ci.org/jaebradley/tinder-access-token-generator)
 [![npm](https://img.shields.io/npm/dt/tinder-access-token-generator.svg)](https://www.npmjs.com/package/tinder-access-token-generator)
 [![npm](https://img.shields.io/npm/v/tinder-access-token-generator.svg)](https://www.npmjs.com/package/tinder-access-token-generator)
