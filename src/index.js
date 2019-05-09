@@ -1,6 +1,7 @@
 import axios from 'axios';
 
 import generateAccessToken from './generateAccessToken';
+import refreshCredentials from './refreshCredentials';
 
 export default async function generateToken({
   facebookEmailAddress,
@@ -23,3 +24,7 @@ export default async function generateToken({
     refreshToken: response.data.data.refresh_token,
   };
 }
+
+export {
+  refreshCredentials,
+};
