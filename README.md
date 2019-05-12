@@ -16,17 +16,53 @@ This library does the following
 
 ### `generateToken`
 
-Generate an access token given a Facebook email address and Facebook password.
+Generate access and refresh tokens given a Facebook email address and Facebook password.
 
-This access token can be used to make Tinder API requests.
+This access token can be used to make Tinder API requests, while the refresh token can be used later to generate updated access and refresh tokens.
 
 ```javascript
-import generateToken from 'tinder-access-token-generator';
+import { generateToken } from 'tinder-access-token-generator';
 
-const accessToken = await generateToken({
+const {
+  apiToken,
+  refreshToken,
+} = await generateToken({
   facebookEmailAddress: 'myfacebookemail@address.com',
   facebookPassword: 'myfacebookpassword',
 });
+```
+
+### `refreshCredentials`
+
+Refresh an access token and refresh token given a previous access token and refresh token.
+
+Given a single session (across both web and mobile clients) this method will return the existing access token and refresh token pair.
+
+However, given multiple sessions, when a single session signs out, all access tokens are invalidated and must be refreshed.
+
+Use this method to refresh the credentials for existing sessions.
+
+However, this method will **not** work when a single session exists (and is subsequently logged out of). In such a case, you'll need to call `generateToken`.
+
+```javascript
+import { generateToken, refreshCredentials } from 'tinder-access-token-generator';
+
+// Generate credentials
+const {
+  apiToken,
+  refreshToken,
+} = await generateToken({
+  facebookEmailAddress: 'myfacebookemail@address.com',
+  facebookPassword: 'myfacebookpassword',
+});
+
+// Some time passes...
+
+// Generate updated credentials
+const {
+  apiToken: updatedApiToken,
+  refreshToken: updatedRefreshToken,
+} = await refreshCredentials({ apiToken, refreshToken });
 ```
 
 ## Local Development

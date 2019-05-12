@@ -9,13 +9,21 @@ import { terser } from 'rollup-plugin-terser';
 
 import pkg from './package.json';
 
+const external = [
+  ...Object.keys(pkg.peerDependencies || {}),
+  ...Object.keys(pkg.dependencies || {}),
+];
+
+const makeExternalPredicate = (externalArr) => {
+  if (externalArr.length === 0) {
+    return () => false;
+  }
+  const pattern = new RegExp(`^(${externalArr.join('|')})($|/)`);
+  return id => pattern.test(id);
+};
+
 const config = {
-  external: [
-    'axios',
-    'puppeteer',
-    '@babel/runtime/regenerator',
-    '@babel/runtime/helpers/asyncToGenerator',
-  ],
+  external: makeExternalPredicate(external),
   input: 'src/index.js',
   output: [
     {
@@ -27,6 +35,7 @@ const config = {
         puppeteer: 'puppeteer',
         '@babel/runtime/regenerator': '_regeneratorRuntime',
         '@babel/runtime/helpers/asyncToGenerator': '_asyncToGenerator',
+        '@babel/runtime/helpers/slicedToArray': '_slicedToArray',
       },
     },
     {
@@ -38,6 +47,7 @@ const config = {
         puppeteer: 'puppeteer',
         '@babel/runtime/regenerator': '_regeneratorRuntime',
         '@babel/runtime/helpers/asyncToGenerator': '_asyncToGenerator',
+        '@babel/runtime/helpers/slicedToArray': '_slicedToArray',
       },
     },
     {
@@ -49,6 +59,7 @@ const config = {
         puppeteer: 'puppeteer',
         '@babel/runtime/regenerator': '_regeneratorRuntime',
         '@babel/runtime/helpers/asyncToGenerator': '_asyncToGenerator',
+        '@babel/runtime/helpers/slicedToArray': '_slicedToArray',
       },
     },
   ],
