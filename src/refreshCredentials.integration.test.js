@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import generateToken, { refreshCredentials } from '.';
+import { generateToken, refreshCredentials } from '.';
 
 jest.setTimeout(20000);
 
