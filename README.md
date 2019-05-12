@@ -21,7 +21,7 @@ Generate access and refresh tokens given a Facebook email address and Facebook p
 This access token can be used to make Tinder API requests, while the refresh token can be used later to generate updated access and refresh tokens.
 
 ```javascript
-import generateToken from 'tinder-access-token-generator';
+import { generateToken } from 'tinder-access-token-generator';
 
 const {
   apiToken,
@@ -45,7 +45,7 @@ Use this method to refresh the credentials for existing sessions.
 However, this method will **not** work when a single session exists (and is subsequently logged out of). In such a case, you'll need to call `generateToken`.
 
 ```javascript
-import generateToken, { refreshCredentials } from 'tinder-access-token-generator';
+import { generateToken, refreshCredentials } from 'tinder-access-token-generator';
 
 // Generate credentials
 const {
