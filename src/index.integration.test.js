@@ -1,4 +1,4 @@
-import generateToken from '.';
+import { generateToken } from '.';
 
 jest.setTimeout(10000);
 

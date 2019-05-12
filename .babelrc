@@ -8,8 +8,7 @@
         ]
       ],
       "plugins": [
-        "@babel/transform-runtime",
-        "@babel/transform-async-to-generator"
+        "@babel/plugin-transform-runtime"
       ]
     },
     "production": {
@@ -20,9 +19,8 @@
         ]
       ],
       "plugins": [
-        "@babel/transform-runtime",
-        "@babel/transform-async-to-generator"
-      ],
+        "@babel/plugin-transform-runtime"
+      ]
     }
   },
   "ignore": [
