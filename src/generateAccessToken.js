@@ -21,6 +21,7 @@ async function generateAccessToken({ emailAddress, password }) {
   ] = await Promise.all([
     page.waitForResponse(resp => resp.url().includes('/dialog/oauth')),
     page.click(LOGIN_ID),
+    page.waitForNavigation({ waitUntil: 'networkidle0' }),
   ]);
 
   const responseText = await response.text();
