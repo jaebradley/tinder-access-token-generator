@@ -13,7 +13,7 @@ jobs:
     script:
     - npm run build
     - npm run lint
-    - npm run test
+    - npm run unit-test
     - npm run is-es5
     after_success: npm run codecov
   - stage: deploy
