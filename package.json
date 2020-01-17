@@ -23,7 +23,7 @@
     "prepare": "npm run build",
     "semantic-release": "semantic-release",
     "test": "BABEL_ENV=test jest src/ -c jest.config.shared.js",
-    "unit-test": "BABEL_ENV=test jest src/ -c jest.config.unit.js",
+    "unit-test": "BABEL_ENV=test jest src/ -c jest.config.unit.js --passWithNoTests",
     "integration-test": "BABEL_ENV=test jest src/ -c jest.config.integration.js"
   },
   "repository": {
