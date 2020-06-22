@@ -1,6 +1,6 @@
 # Tinder Access Token Generator
 
-[![Build Status](https://travis-ci.org/jaebradley/tinder-access-token-generator.svg?branch=master)](https://travis-ci.org/jaebradley/tinder-access-token-generator)
+![Tinder Access Token Generator](https://github.com/jaebradley/tinder-access-token-generator/workflows/Tinder%20Access%20Token%20Generator/badge.svg)
 [![npm](https://img.shields.io/npm/dt/tinder-access-token-generator.svg)](https://www.npmjs.com/package/tinder-access-token-generator)
 [![npm](https://img.shields.io/npm/v/tinder-access-token-generator.svg)](https://www.npmjs.com/package/tinder-access-token-generator)
 
