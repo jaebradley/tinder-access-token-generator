@@ -4,9 +4,9 @@
 [![npm](https://img.shields.io/npm/dt/tinder-access-token-generator.svg)](https://www.npmjs.com/package/tinder-access-token-generator)
 [![npm](https://img.shields.io/npm/v/tinder-access-token-generator.svg)](https://www.npmjs.com/package/tinder-access-token-generator)
 
-An `npm` package for use in `Node` that generates access tokens for the Tinder API using Facebook credentials.
+An `npm` package for use in `Node` that generates access tokens for the Tinder API using Facebook credentials or SMS-based login.
 
-This library does the following
+This library does the following when logging through via Facebook
 
 1. Uses [`puppeteer`](https://github.com/GoogleChrome/puppeteer) to effectively go through the login flow via headless browser
 2. Goes through Tinder confirmation flow - intercepts authentication response and parses access token
@@ -63,6 +63,41 @@ const {
   apiToken: updatedApiToken,
   refreshToken: updatedRefreshToken,
 } = await refreshCredentials({ apiToken, refreshToken });
+```
+
+### `requestSMSCodes`
+
+Generate two codes, one via the `HTTP` response and the other via `SMS`.
+
+Both of these codes will be used later when exchanged for api and refresh tokens.
+
+There's an optional `locale` query parameter that is by default set to `en_US` but can be changed to modify the language of the `SMS` message.
+
+```javascript
+import { requestSMSCodes } from 'tinder-access-token-generator';
+
+const {
+  loginRequestCode,
+} = await requestSMSCodes({
+  phoneNumber: '+12345678910',
+});
+```
+
+### `exchangeSMSCodes`
+
+Generates api and refresh tokens using the `loginRequestCode` response value from `requestSMSCodes` and the code sent via `SMS`.
+
+```javascript
+import { exchangeSMSCodes } from 'tinder-access-token-generator';
+
+const {
+  apiToken,
+  refreshToken,
+} = await exchangeSMSCodes({
+  phoneNumber: '+12345678910',
+  loginCode: 'value from requestSMSCodes response',
+  smsCode: 'value sent via SMS',
+})
 ```
 
 ## Local Development
